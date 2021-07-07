@@ -1,0 +1,36 @@
+{% extends 'basicbank/index.html' %}
+{% load static %}
+{% block content %}
+<br>
+<h1 style="color:white;font-family:'Playfair Display', serif;font-size: 30px;text-align:center;">Customer Details</h1>
+<br>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12 col-md-12 col-lg-12 d-block m-auto">
+<br>
+<table>
+<thead> 
+<tr>
+<th>Sr No.</th>
+<th>Name</th>
+<th>Email</th>
+<th>Account Bal</th>
+</tr>
+</thead>
+<tbody>
+{% for cust in customer %}
+<tr>
+<td>{{cust.id}}</td>
+<td>{{cust.name}}</td>
+<td>{{cust.email}}</td>
+<td>{{cust.accbal}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<br>
+<br>
+</div>
+</div>
+</div>
+{% endblock content %}

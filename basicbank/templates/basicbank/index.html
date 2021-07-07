@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="{% static 'basicbank/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'basicbank/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'basicbank/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<style>
+    #bg{
+        background-position: inherit;
+        background-repeat: no-repeat;
+        background-size:contain;
+        background-position:center;
+        background-image: url( "{% static 'basicbank/images/10107.jpg' %}");
+        }
+</style>
+<link rel="shortcut icon" href="{% static 'basicbank/icons/favicon.ico' %}" type="image/x-icon">  
+    <title>Basic Banking System</title>
+</head>
+<body>
+{% csrf_token %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="nav-link active"  href="{% url 'index' %}"><i class="fas fa-university fa-2x"></i></a>
+          <a class="navbar-brand" href="{% url 'index' %}">TSF Bank</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active"  href="{% url 'index' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'customers' %}">View Customers</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'transfermoney' %}">Transfer Money</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'transferdetails' %}">Transfer Details</a>
+              </li> 
+              <li class="nav-item">
+                <button type="button" class="btn btn-secondary" style="color:white;" data-toggle="modal" data-target="#exampleModal">
+              How To
+            </button>
+              </li> 
+            </ul>
+          </div>
+        </div>
+      </nav>
+     <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Follow the Steps!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <p>Step 1: Go to transfer money</p>
+          <p>Step 2: Fill necessary details</p>
+          <p>Step 3: Check transfer details</p>
+          <p>Step 4: Check Customer details</p>
+          <p>Step 5: Done!!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+ {% for message in messages  %}            
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            <strong>Message : </strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      {% endfor %} 
+
+        {% block content %}
+        <div class="container c1" id="bg">
+        <div class="row">
+        <div class="col-sm-12 text-center col-12 h-100">
+            <h1>
+            <a href="" class="typewrite" id="headtag" data-period="2000" data-type='[ "Welcome to TSF Bank" ]'>
+              <span class="nowrap"></span>
+            </a>
+          </h1>
+        </div>
+        </div>
+        </div>
+        <div class="container c2">
+          <div class="row">
+            <div class="col-sm-4 col-12">
+              <div class="card" style="width: 70%">
+                <img class="card-img-top" src="{% static 'basicbank/images/user.png' %}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">View Customers</h5>
+                     <p class="card-text">Click on the button below to view customers.</p>
+                    <a href="{% url 'customers' %}" class="btn btn-danger">View customers</a>
+                  </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-12">
+              <div class="card" style="width: 70%">
+                <img class="card-img-top" src="{% static 'basicbank/images/money.png' %}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Transfer Money</h5>
+                    <p class="card-text">Here you can transfer money easily, Please click on button below.</p>
+                    <a href="{% url 'transfermoney' %}" class="btn btn-danger">Transfer Money</a>
+                  </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-12">
+              <div class="card" style="width: 70%">
+                <img class="card-img-top" src="{% static 'basicbank/images/transfer.png' %}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Transfer Details</h5>
+                    <p class="card-text">FOr transfer details click on button below.</p>
+                    <a href="{% url 'transferdetails' %}" class="btn btn-danger">Transfer Details</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="jumbotron j1">
+          <h1 class="display-4" style="text-align:center;">About Us</h1>
+          <p class="lead">TSF Bank, with more than 70,000 employees 
+          is the parent company of TSF Bank National Association, the fifth-largest commercial bank in the India. 
+           Based in Minneapolis, we blend our relationship teams, branches and ATM network with mobile and online tools that allow customers 
+           to bank how, when and where they prefer. We are committed to serving our millions of retail, business, wealth management, payment, 
+           commercial and corporate, 
+           and investment services customers across the country and around the world as a trusted financial partner.</p>
+        </div>
+     <section id="footer" class="bg sticky-bottom">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<ul class="list-unstyled list-inline social text-center">
+						<li class="list-inline-item"><a href="#"><i class="fab fa-facebook fa-2x"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="fab fa-twitter fa-2x"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="fab fa-instagram fa-2x"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="fab fa-google-plus fa-2x"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i class="fa fa-envelope fa-2x"></i></a></li>
+					</ul>
+				</div>
+				<hr>
+			</div>	
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+        <strong> Above links are not active</strong>
+        <br>
+        <a href='https://www.freepik.com/vectors/people'>Attribute- People vector created by pch.vector - www.freepik.com</a>
+        <br>
+        <br>
+					<p class="h6">TSF Bank © All right Reversed.</p>
+          <br>
+					<p class="h6">Made by Rushikesh Ghodake</p>
+				</div>
+				<hr>
+			</div>	
+		</div>
+	</section>
+
+        {% endblock content %}
+          <br>    
+</div>
+    	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="{% static 'basicbank/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'basicbank/js/jq.js' %}"></script>
+    <script src="{% static 'basicbank/js/all.min.js' %}"></script>
+    <script src="{% static 'basicbank/js/new.js' %}"></script>
+    <script src="{% static 'basicbank/js/script.js' %}"></script>
+</body>
+</html>

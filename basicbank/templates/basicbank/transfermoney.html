@@ -1,0 +1,38 @@
+{% extends 'basicbank/index.html' %}
+{% load static %}
+{% block content %}
+<br>
+{% csrf_token %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 col-md-12  d-block">
+                    <h5 style="font-size:30px;text-align:center;color:white; font-family: 'Playfair Display', serif">Transfer Money</h5>
+                    <form action="" method="post">
+                    {% csrf_token %}
+                    <label for="email" class="blk">Select your email</label>
+                    <select name="email" id="sender" class="blk inp" style="color:black" required>
+                    <option class="blk" style="color:black" value="select">Select</option>
+                    {% for cust in customer  %}
+                        <option class="blk" style="color:black" value="{{cust.email}}">{{cust.name}}: {{cust.email}}</option>
+                    {% endfor %}
+                    </select>
+                    <br>
+                    <label for="amount" class="blk">Enter Amount</label>
+                    <input type="number" class="blk inp" style="color:black" name="amount" id="amt" value="null" required>
+                    <br>
+                    <label for="rec" class="blk">Select reciever email</label>
+                    <select name="rec" id="reciever" class="blk inp" style="color:black" required>
+                    <option class="blk" style="color:black" value="select">Select</option>
+                    {% for cust in customer  %}
+                        <option class="blk" style="color:black" value="{{cust.email}}">{{cust.name}}: {{cust.email}}</option>
+                    {% endfor %}
+                    </select>
+                    <br>
+                    <button type="submit"id="but" class="btn btn-danger">Transfer</button>
+                    </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

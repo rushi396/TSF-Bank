@@ -1,0 +1,32 @@
+{% extends 'basicbank/index.html' %}
+{% load static %}
+{% block content %}
+<br>
+<h1 style="color:white;font-family: 'Playfair Display', serif;font-size: 30px;text-align:center;">Transfer Details</h1>
+<br>
+<br>
+<table>
+<thead> 
+<tr>
+<th>Sr No.</th>
+<th>Sender</th>
+<th>Reciever</th>
+<th>Transfer Amt</th>
+<th>Date</th>
+</tr>
+</thead>
+<tbody>
+{% for t in tr %}
+<tr>
+<td>{{t.id}}</td>
+<td>{{t.sender}}</td>
+<td>{{t.reciever}}</td>
+<td>{{t.amount}}</td>
+<td>{{t.date_tran}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<br>
+<br>
+{% endblock content %}
