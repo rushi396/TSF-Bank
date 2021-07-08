@@ -22,7 +22,7 @@
         }
 </style>
 <link rel="shortcut icon" href="{% static 'basicbank/icons/favicon.ico' %}" type="image/x-icon">  
-    <title>Basic Banking System</title>
+
 </head>
 <body>
 {% csrf_token %}
@@ -69,11 +69,12 @@
         </button>
       </div>
       <div class="modal-body">
-          <p>Step 1: Go to transfer money</p>
-          <p>Step 2: Fill necessary details</p>
-          <p>Step 3: Check transfer details</p>
-          <p>Step 4: Check Customer details</p>
-          <p>Step 5: Done!!</p>
+          <p>Step 1: Check Customer details</p>
+          <p>Step 2: Go to transfer money</p>
+          <p>Step 3: Fill necessary details</p>
+          <p>Step 4: Check transfer details</p>
+          <p>Step 5: Check updated Customer details</p>
+          <p>Step 6: Done!!</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -91,6 +92,7 @@
       {% endfor %} 
 
         {% block content %}
+            <title>TSF Bank</title>
         <div class="container c1" id="bg">
         <div class="row">
         <div class="col-sm-12 text-center col-12 h-100">
@@ -104,7 +106,7 @@
         </div>
         <div class="container c2">
           <div class="row">
-            <div class="col-sm-4 col-12">
+            <div class="col-sm-12 col-lg-4 col-12">
               <div class="card" style="width: 70%">
                 <img class="card-img-top" src="{% static 'basicbank/images/user.png' %}" alt="Card image cap">
                   <div class="card-body">
@@ -114,7 +116,7 @@
                   </div>
               </div>
             </div>
-            <div class="col-sm-4 col-12">
+            <div class="col-sm-12 col-lg-4 col-12">
               <div class="card" style="width: 70%">
                 <img class="card-img-top" src="{% static 'basicbank/images/money.png' %}" alt="Card image cap">
                   <div class="card-body">
@@ -124,12 +126,12 @@
                   </div>
               </div>
             </div>
-            <div class="col-sm-4 col-12">
+            <div class="col-sm-12 col-lg-4 col-12">
               <div class="card" style="width: 70%">
                 <img class="card-img-top" src="{% static 'basicbank/images/transfer.png' %}" alt="Card image cap">
                   <div class="card-body">
                     <h5 class="card-title">Transfer Details</h5>
-                    <p class="card-text">FOr transfer details click on button below.</p>
+                    <p class="card-text">For transfer details click on button below.</p>
                     <a href="{% url 'transferdetails' %}" class="btn btn-danger">Transfer Details</a>
                   </div>
               </div>
@@ -179,6 +181,7 @@
         {% endblock content %}
           <br>    
 </div>
+
     	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

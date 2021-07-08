@@ -16,31 +16,28 @@ def cust(request):
         print(amt)
         print(rec)
         amt=int(amt)
-        if amt <= 0:
-            messages.warning(request,'Please provide correct money details!!')
-        for c in customer:
-            if c.email==email:
-                j=email
-                i=c.id
-                name=c.name
-                if amt > c.accbal:
-                    messages.warning(request,"Insufficient Balance!!")   
-                break   
-        if email == 'select':
-            messages.warning(request,"Mail is not registered")  
+        
+        if email == 'select' or rec == 'select' or (email=='select' and rec=='select') or rec==email:
+            messages.warning(request,"EmailId not selected or both EmailId's are same")  
+        elif amt <= 0:
+            messages.warning(request,'Please provide valid money details!!')
+        else:
+            for c in customer:
+                if c.email==email:
+                    j=email
+                    i=c.id
+                    name=c.name
+                    if amt > c.accbal:
+                        messages.warning(request,"Insufficient Balance!!")   
+                    break
 
-        for c in customer:
-            if rec==email:
-                messages.warning(request,"Please select correct email") 
-            break
         for x in customer:
             if x.email==rec:
                 rid=x.id
                 rname=x.name
                 rbal=x.accbal
                 break
-        if rec == 'select':
-            messages.warning(request,"Mail is not registered")
+ 
         for c in customer: 
             if c.email==email and rec!=email and rec!='select' and amt<=c.accbal and amt>0:
                 q1= Transfer(sender=name,reciever=rname,amount=amt)

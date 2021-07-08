@@ -3,24 +3,25 @@
 {% block content %}
 <br>
 {% csrf_token %}
+<title>Tranfer Money</title>
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-lg-12 col-md-12  d-block">
                     <h5 style="font-size:30px;text-align:center;color:white; font-family: 'Playfair Display', serif">Transfer Money</h5>
                     <form action="" method="post">
                     {% csrf_token %}
-                    <label for="email" class="blk">Select your email</label>
+                    <label for="email" class="blk">Select Sender Details</label>
                     <select name="email" id="sender" class="blk inp" style="color:black" required>
                     <option class="blk" style="color:black" value="select">Select</option>
                     {% for cust in customer  %}
-                        <option class="blk" style="color:black" value="{{cust.email}}">{{cust.name}}: {{cust.email}}</option>
+                        <option class="blk" style="color:black" value="{{cust.email}}">{{cust.name}}: {{cust.email}} [AccBal: {{cust.accbal}}]</option>
                     {% endfor %}
                     </select>
                     <br>
                     <label for="amount" class="blk">Enter Amount</label>
                     <input type="number" class="blk inp" style="color:black" name="amount" id="amt" value="null" required>
                     <br>
-                    <label for="rec" class="blk">Select reciever email</label>
+                    <label for="rec" class="blk">Select reciever Details</label>
                     <select name="rec" id="reciever" class="blk inp" style="color:black" required>
                     <option class="blk" style="color:black" value="select">Select</option>
                     {% for cust in customer  %}
@@ -34,5 +35,5 @@
     </div>
 </div>
 
-
+<p style="padding:10px 10px; display:block; color:white; text-align:center;" class="bg-dark sticky-bottom fixed-bottom">TSF Bank © All right Reversed.</p>
 {% endblock content %}

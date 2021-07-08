@@ -5,9 +5,9 @@ from .models import *
 
 @admin.register(Customer)
 class customer(admin.ModelAdmin):
-    list_display = ['name','email','accbal']
+    list_display = ['id','name','email','accbal']
 
 @admin.register(Transfer)
 class Transfer(admin.ModelAdmin):
-    list_display = ['sender','reciever','date_tran']
+    list_display = ['sender','reciever','amount','date_tran']
 
